@@ -1,5 +1,5 @@
 import express from 'express'
-import { show, getCat, createCat } from './controllers/catsController.js'
+import { show, getCat, createCat, deleteCat } from './controllers/catsController.js'
 import { db } from './utils/db.js'
 import { CatSeeder } from './seeder/catSeeder.js';
 import dotenv from 'dotenv';
@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: false }))
 app.get('/v1/cats', show)
 app.get('/v1/cats/:catId', getCat)
 app.post('/v1/cats', createCat)
+app.delete('/v1/cats/:catId', deleteCat)
 
 app.listen(port, () => {
     console.log(`Cats app listening on port ${port}`)

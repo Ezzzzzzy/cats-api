@@ -72,3 +72,19 @@ export const createCat = async (req, res) => {
     }
 }
 
+export const deleteCat = async (req, res) => {
+    let { catId } = req.params
+    try {
+        await Cat.destroy({ where: { id: catId } })
+
+        res.send({
+            body: "Success"
+        })
+
+    } catch (error) {
+        res.status(500).send({
+            body: error
+        })
+    }
+}
+
