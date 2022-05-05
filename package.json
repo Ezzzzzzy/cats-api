@@ -2,10 +2,10 @@
   "name": "cats-api",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "nodemon app.js",
-    "devStart": "nodemon app.js"
+    "start": "nodemon src/app.js",
+    "devStart": "nodemon src/app.js"
   },
   "type": "module",
   "author": "",
