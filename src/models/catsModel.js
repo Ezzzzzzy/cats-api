@@ -4,7 +4,6 @@ import { db } from '../utils/db.js'
 class Cat extends Model { }
 
 Cat.init({
-    // Model attributes are defined here
     id: {
         type: DataTypes.BIGINT,
         primaryKey: true,
@@ -16,12 +15,10 @@ Cat.init({
     },
     weight: {
         type: DataTypes.STRING
-        // allowNull defaults to true
     }
 }, {
-    // Other model options go here
-    sequelize: db, // We need to pass the connection instance
-    modelName: 'Cat' // We need to choose the model name
+    sequelize: db,
+    modelName: 'Cat'
 });
 
 export default Cat
