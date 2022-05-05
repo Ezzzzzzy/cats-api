@@ -1,5 +1,5 @@
 import express from 'express'
-import { show } from './controllers/catsController.js'
+import { show, getCat } from './controllers/catsController.js'
 import { db } from './utils/db.js'
 import { CatSeeder } from './seeder/catSeeder.js';
 import dotenv from 'dotenv';
@@ -24,7 +24,8 @@ try {
 let app = express()
 
 
-app.get('/', show)
+app.get('/v1/cats', show)
+app.get('/v1/cats/:catId', getCat)
 
 
 

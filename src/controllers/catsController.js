@@ -24,7 +24,21 @@ export const show = async (req, res) => {
             "body": cat
         })
     } catch (error) {
+        res.status(500).send({
+            body: error
+        })
+    }
+}
+
+export const getCat = async (req, res) => {
+    let { catId } = req.params
+    try {
+        let cat = await Cat.findOne({ where: { id: catId } })
         res.send({
+            cat
+        })
+    } catch (error) {
+        res.status(500).send({
             body: error
         })
     }
