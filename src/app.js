@@ -1,8 +1,9 @@
 import express from 'express'
-import { show, getCat } from './controllers/catsController.js'
+import { show, getCat, createCat } from './controllers/catsController.js'
 import { db } from './utils/db.js'
 import { CatSeeder } from './seeder/catSeeder.js';
 import dotenv from 'dotenv';
+import bodyParser from 'body-parser'
 
 dotenv.config();
 
@@ -22,12 +23,11 @@ try {
 }
 
 let app = express()
-
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/v1/cats', show)
 app.get('/v1/cats/:catId', getCat)
-
-
+app.post('/v1/cats', createCat)
 
 app.listen(port, () => {
     console.log(`Cats app listening on port ${port}`)
