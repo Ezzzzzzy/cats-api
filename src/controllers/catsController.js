@@ -4,7 +4,7 @@ import { Op } from 'sequelize';
 import Validator from 'validatorjs';
 
 export const show = async (req, res) => {
-    let { page, pageSize, sort, search } = req.query
+    let { page = 1, pageSize = 10, sort, search } = req.query
 
     let query = {
         where: search ? { where: { name: { [Op.like]: `%${search}%` } } } : {},
