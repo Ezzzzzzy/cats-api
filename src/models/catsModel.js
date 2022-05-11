@@ -13,6 +13,10 @@ Cat.init({
         type: DataTypes.STRING,
         allowNull: false
     },
+    breedGroup: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     weight: {
         type: DataTypes.STRING
     }

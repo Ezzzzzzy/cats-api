@@ -26,9 +26,9 @@ export const show = async (req, res) => {
             "body": cat
         })
     } catch (error) {
-        res.status(500).send({
+        res.send({
             body: error
-        })
+        }, 500)
     }
 }
 
@@ -40,35 +40,36 @@ export const getCat = async (req, res) => {
             cat
         })
     } catch (error) {
-        res.status(500).send({
+        res.send({
             body: error
-        })
+        }, 500)
     }
 }
 
 export const createCat = async (req, res) => {
-    let { name, weight } = req.body
+    let { name, weight, breedGroup } = req.body
 
     let validators = {
         "name": 'required',
-        'weight': 'required'
+        'weight': 'required',
+        'breedGroup': 'required'
     }
 
     let validation = new Validator(req.body, validators);
     if (validation.fails()) {
-        return res.send(validation.errors)
+        return res.send(validation.errors, 422)
     }
 
     try {
-        await Cat.create({ name: name, weight: weight })
+        await Cat.create({ name: name, weight: weight, breedGroup: breedGroup })
         res.send({
             body: "Success"
         })
 
     } catch (error) {
-        res.status(500).send({
+        res.send({
             body: error
-        })
+        }, 500)
     }
 }
 
@@ -79,12 +80,12 @@ export const deleteCat = async (req, res) => {
 
         res.send({
             body: "Success"
-        })
+        }, 500)
 
     } catch (error) {
-        res.status(500).send({
+        res.send({
             body: error
-        })
+        }, 500)
     }
 }
 
